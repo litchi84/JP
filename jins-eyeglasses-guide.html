@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JINS眼镜店 - 两大场景完全攻略</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a73e8;
+            --accent: #ea4335;
+            --success: #34a853;
+            --warning: #fbbc04;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --text-dark: #202124;
+            --text-gray: #5f6368;
+            --border: #dadce0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-light: #202124;
+                --bg-white: #292a2d;
+                --text-dark: #f8f9fa;
+                --text-gray: #bdc1c6;
+                --border: #5f6368;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            border: none;
+            background: none;
+            color: var(--text-gray);
+            font-size: 1em;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-btn:hover {
+            color: var(--text-dark);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section {
+            background: var(--bg-white);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .section h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .background-info {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .background-info h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .background-info ul {
+            list-style-position: inside;
+            margin-left: 10px;
+        }
+
+        .background-info li {
+            margin-bottom: 8px;
+            color: var(--text-gray);
+            font-size: 0.9em;
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: var(--bg-light);
+            border-radius: 4px;
+        }
+
+        .checklist-item::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .flow-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .flow-table th {
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .flow-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .flow-table tr:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .step-num {
+            font-weight: bold;
+            color: var(--primary);
+            min-width: 30px;
+        }
+
+        .honorific-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .honorific-standard {
+            background: var(--accent);
+            color: white;
+        }
+
+        .honorific-polite {
+            background: var(--warning);
+            color: white;
+        }
+
+        .dialog-section {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .dialog-you {
+            margin-bottom: 12px;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .dialog-you .label {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .dialog-you .text {
+            margin-top: 5px;
+            color: var(--text-dark);
+        }
+
+        .dialog-you .option {
+            margin-top: 6px;
+            padding: 6px 10px;
+            background: var(--bg-white);
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: var(--text-gray);
+            border-left: 2px solid var(--warning);
+        }
+
+        .dialog-them {
+            margin-bottom: 12px;
+            padding-left: 15px;
+            border-left: 3px solid var(--success);
+            background: rgba(52, 168, 83, 0.05);
+            padding: 10px 15px;
+            border-radius: 4px;
+        }
+
+        .dialog-them .label {
+            color: var(--success);
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .dialog-them .text {
+            margin-top: 5px;
+            color: var(--text-dark);
+            font-style: italic;
+        }
+
+        .tips-box {
+            background: rgba(251, 188, 4, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .tips-box h4 {
+            color: var(--warning);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .tips-box ul {
+            list-style-position: inside;
+            margin-left: 0;
+        }
+
+        .tips-box li {
+            margin-bottom: 8px;
+            color: var(--text-gray);
+            font-size: 0.9em;
+        }
+
+        .vocab {
+            background: var(--bg-light);
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .vocab .jp {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .vocab .cn {
+            color: var(--text-gray);
+            font-size: 0.9em;
+        }
+
+        .learning-note {
+            background: rgba(234, 67, 53, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .learning-note h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .learning-note ul {
+            list-style-position: inside;
+        }
+
+        .learning-note li {
+            margin-bottom: 8px;
+            color: var(--text-gray);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👓 JINS眼镜店 攻略指南</h1>
+        <p class="subtitle">两大场景完全准备 - 从进门到付款</p>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab(event, 'scenario-a')">
+                📍 场景A: 只换镜框
+            </button>
+            <button class="tab-btn" onclick="switchTab(event, 'scenario-b')">
+                📍 场景B: 全新配镜
+            </button>
+        </div>
+
+        <!-- ========== 场景 A ========== -->
+        <div id="scenario-a" class="tab-content active">
+
+            <!-- 背景知识 -->
+            <div class="section">
+                <h2>1️⃣ 背景知识速览</h2>
+
+                <div class="background-info">
+                    <h3>💡 什么是「フレームのみ交換」（只换镜框）?</h3>
+                    <ul>
+                        <li>你现有眼镜的镜片度数仍然合适，只是框架老化、损坏或想要新风格</li>
+                        <li>JINS 可以帮你把旧镜片装入新框架</li>
+                        <li>这是一项快速服务（通常15-30分钟当场完成）</li>
+                        <li>费用：只需要购买新框架，镜片可以继续用</li>
+                    </ul>
+                </div>
+
+                <div class="background-info">
+                    <h3>📋 需要携带什么？</h3>
+                    <div class="checklist">
+                        <div class="checklist-item">现在的眼镜</div>
+                        <div class="checklist-item">身份证（可选但建议）</div>
+                        <div class="checklist-item">保险卡（如有处方）</div>
+                        <div class="checklist-item">足够现金/信用卡</div>
+                    </div>
+                </div>
+
+                <div class="background-info">
+                    <h3>🔑 关键词汇</h3>
+                    <div class="vocab">
+                        <div class="jp">フレーム</div>
+                        <div class="cn">镜框</div>
+                    </div>
+                    <div class="vocab">
+                        <div class="jp">レンズ</div>
+                        <div class="cn">镜片</div>
+                    </div>
+                    <div class="vocab">
+                        <div class="jp">フレームのみ交換</div>
+                        <div class="cn">只换镜框（保留镜片）</div>
+                    </div>
+                    <div class="vocab">
+                        <div class="jp">度数</div>
+                        <div class="cn">镜片度数/处方</div>
+                    </div>
+                    <div class="vocab">
+                        <div class="jp">在庫あり/在庫なし</div>
+                        <div class="cn">有货/无货</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 完整流程 -->
+            <div class="section">
+                <h2>2️⃣ 完整流程表</h2>
+                <table class="flow-table">
+                    <tr>
+                        <th>步骤</th>
+                        <th>主要任务</th>
+                        <th>敬语等级</th>
+                    </tr>
+                    <tr>
+                        <td class="step-num">1</td>
+                        <td>进店 + 向店员说明来意</td>
+                        <td><span class="honorific-badge honorific-standard">標準敬語</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">2</td>
+                        <td>确认服务可行性（是否能换镜框）</td>
+                        <td><span class="honorific-badge honorific-standard">標準敬語</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">3</td>
+                        <td>检查镜片质量 + 预计价格咨询</td>
+                        <td><span class="honorific-badge honorific-polite">丁寧体</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">4</td>
+                        <td>选择新框架</td>
+                        <td><span class="honorific-badge honorific-polite">丁寧体</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">5</td>
+                        <td>完成交换 + 确认新眼镜</td>
+                        <td><span class="honorific-badge honorific-polite">丁寧体</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">6</td>
+                        <td>付款 + 收据和保修单</td>
+                        <td><span class="honorific-badge honorific-polite">丁寧体</span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 对话脚本 -->
+            <div class="section">
+                <h2>3️⃣ 完整对话脚本</h2>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤1】进店 + 说明来意</strong>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">こんにちは。フレームのみ交換したいんですけど、できますか？</div>
+                        <div class="option">【翻译】你好，我想只换镜框，可以吗？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">かしこまりました。ちょっと見させていただけますか？</div>
+                        <div class="option">【翻译】好的。能让我看一下您现在的眼镜吗？</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤2】确认可行性</strong>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">現在のメガネは古くて、新しいフレームにしたいんです。レンズは今のまま使いたいです。</div>
+                        <div class="option">【翻译】现在的眼镜太旧了，想要新框架。镜片的话想继续用现在的。</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">承知しました。ちょっとレンズの状態を確認させていただきます。</div>
+                        <div class="option">【翻译】我明白了。让我先检查一下镜片的状态。</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">检查后：</div>
+                        <div class="text">レンズはまだきれいな状態ですね。交換できますよ。</div>
+                        <div class="option">【翻译】镜片状况还不错。可以给您换框架。</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤3】价格和时间确认</strong>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">交換にかかる時間と、費用はいくらぐらいですか？</div>
+                        <div class="option">【翻译】大概需要多长时间？费用大约多少？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">フレーム代だけですと、3,000円から8,000円くらいですね。交換は30分くらいで完了します。</div>
+                        <div class="option">【翻译】只需要购买框架，3千到8千日元左右。交换大约30分钟可以完成。</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤4】选择新框架</strong>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">いろいろ見てみたいんですけど。何色がありますか？</div>
+                        <div class="option">【翻译】想看看有什么颜色。有哪些颜色选择？</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">选中后说：</div>
+                        <div class="text">この黒いフレームがいいです。サイズは合いますか？</div>
+                        <div class="option">【翻译】我想要这个黑色框架。尺码合适吗？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">かけてみていただけますか？サイズを確認させていただきます。</div>
+                        <div class="option">【翻译】能试一下吗？我来帮您确认尺码。</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤5】交换完成</strong>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">見え方はどうですか？チェックしていただけますか？</div>
+                        <div class="option">【翻译】看起来怎么样？能帮我检查一下吗？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">大丈夫ですね。これでよろしいですか？</div>
+                        <div class="option">【翻译】没问题。这样可以吗？</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">はい、ありがとうございます。</div>
+                        <div class="option">【翻译】好的，谢谢。</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤6】付款</strong>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见说：</div>
+                        <div class="text">かかりました金額は5,500円です。</div>
+                        <div class="option">【翻译】总共是5千5百日元。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">カードで大丈夫ですか？</div>
+                        <div class="option">【翻译】可以用信用卡吗？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">はい、大丈夫です。</div>
+                        <div class="option">【翻译】是的，可以的。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">レシートと保証をお願いします。</div>
+                        <div class="option">【翻译】请给我收据和保修单。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 关键表达 -->
+            <div class="section">
+                <h2>4️⃣ 关键表达与难点</h2>
+
+                <div class="tips-box">
+                    <h4>🎯 高频短语（可直接背诵）</h4>
+                    <ul>
+                        <li><strong>フレームのみ交換したいんですけど</strong> - 我想只换镜框</li>
+                        <li><strong>レンズは今のまま使いたい</strong> - 镜片想继续用现在的</li>
+                        <li><strong>度数（どすう）は変わらないはずです</strong> - 度数应该没变</li>
+                        <li><strong>在庫（ざいこ）はありますか</strong> - 有现货吗？</li>
+                        <li><strong>当日中に受け取れますか</strong> - 今天能取吗？</li>
+                        <li><strong>既存のレンズを流用できますか</strong> - 能继续用旧镜片吗？</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <h4>⚠️ 常见陷阱 & 文化礼仪</h4>
+                    <ul>
+                        <li><strong>不要说「古い」</strong> - 说眼镜"old"显得不尊重。用「今のメガネから新しくしたい」（想升级）更自然</li>
+                        <li><strong>确认度数很重要</strong> - 日本眼镜店需要确认度数是否仍然适合。如果你听不懂度数相关的日语，要求重复</li>
+                        <li><strong>试戴是礼貌的</strong> - 店员会问「かけてみていただけますか」(能试一下吗)，一定要试戴，不试戴显得不认真</li>
+                        <li><strong>「どのくらい」vs「いくら」</strong> - 前者问"多少程度"（时间/大小），后者问"多少钱"。容易混淆</li>
+                        <li><strong>接受店员检查</strong> - 店员说「見させていただけますか」，要主动递眼镜，不要犹豫</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <h4>🆘 如果没听懂怎么办？</h4>
+                    <ul>
+                        <li><strong>安全的追问1</strong>：「もう一度お願いします」（再说一遍好吗）</li>
+                        <li><strong>安全的追问2</strong>：「すみません、ゆっくりお願いします」（抱歉，能说慢一点吗）</li>
+                        <li><strong>安全的追问3</strong>：「その部分がよく分かりませんでした。書いていただけますか」（那部分我没听清。能写下来吗）</li>
+                        <li><strong>关键词不懂</strong>：直接问「『〇〇』というのは、どういう意味ですか」（"XX"是什么意思）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 学习笔记 -->
+            <div class="learning-note">
+                <h4>📚 学习笔记 - 场景A 知识点总结</h4>
+                <ul>
+                    <li><strong>核心敬语</strong>：「～していただけますか」（能帮我～吗）是这个场景最常用的敬语结构，主要是请求对方帮助</li>
+                    <li><strong>度数话题</strong>：如果店员问「度数はいくつですか」，最保险的回答是"不知道"：「すみません、分かりません」然后让他们检查</li>
+                    <li><strong>时间估计</strong>：日本店员给的时间是"保守估计"，实际可能更快。如果他们说30分钟，可能20分钟就好</li>
+                    <li><strong>支付方式</strong>：大多数JINS都接受卡，但小店可能只要现金。提前问「カード払いは大丈夫ですか」最保险</li>
+                    <li><strong>保修单</strong>：「保証書」在日本很重要，如果眼镜有问题可以免费维修。一定要拿好</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- ========== 场景 B ========== -->
+        <div id="scenario-b" class="tab-content">
+
+            <!-- 背景知识 -->
+            <div class="section">
+                <h2>1️⃣ 背景知识速览</h2>
+
+                <div class="background-info">
+                    <h3>💡 什么是「新しくメガネを作る」（新配眼镜）?</h3>
+                    <ul>
+                        <li>你需要验光检查 → 选择镜框 → 配新镜片</li>
+                        <li>这是"全套服务"，包括专业验光（度数、散光、瞳距等）</li>
+                        <li>所需时间：较长（验光15-30分钟 + 制镜1-3天）</li>
+                        <li>日本眼镜店通常需要当天量度并订制，不一定当日完成</li>
+                        <li>费用：框架 + 镜片 + 验光费（通常3000-15000日元起）</li>
+                    </ul>
+                </div>
+
+                <div class="background-info">
+                    <h3>📋 需要携带什么？</h3>
+                    <div class="checklist">
+                        <div class="checklist-item">现在的眼镜（参考用）</div>
+                        <div class="checklist-item">身份证/护照</div>
+                        <div class="checklist-item">保险卡（日本居民有）</div>
+                        <div class="checklist-item">足够现金/信用卡</div>
+                    </div>
+                </div>
+
+                <div class="background-info">
+                    <h3>🔑 关键词汇</h3>
+                    <div class="vocab">
+                        <div class="jp">視力検査（しりょくけんさ）</div>
+                        <div class="cn">视力检查</div>
+                    </div>
+                    <div class="vocab">
+                        <div class="jp">度数（どすう）</div>
+                        <div class="cn">度数/屈光度</div>
+                    </div>
+                    <div class="vocab">
+                        <div class="jp">乱視（らんし）</div>
+                        <div class="cn">散光</div>
+                    </div>
+                    <div class="vocab">
+                        <div class="jp">瞳孔距離（どうこうきょり）/ PD</div>
+                        <div class="cn">瞳距</div>
+                    </div>
+                    <div class="vocab">
+                        <div class="jp">処方箋（しょほうせん）</div>
+                        <div class="cn">眼镜处方</div>
+                    </div>
+                    <div class="vocab">
+                        <div class="jp">レンズの種類</div>
+                        <div class="cn">镜片种类（单焦、渐进、防蓝光等）</div>
+                    </div>
+                    <div class="vocab">
+                        <div class="jp">納期（のうき）</div>
+                        <div class="cn">交货时间</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 完整流程 -->
+            <div class="section">
+                <h2>2️⃣ 完整流程表</h2>
+                <table class="flow-table">
+                    <tr>
+                        <th>步骤</th>
+                        <th>主要任务</th>
+                        <th>敬语等级</th>
+                    </tr>
+                    <tr>
+                        <td class="step-num">1</td>
+                        <td>进店 + 说明需求（新配眼镜）</td>
+                        <td><span class="honorific-badge honorific-standard">標準敬語</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">2</td>
+                        <td>视力检查 + 度数测量</td>
+                        <td><span class="honorific-badge honorific-polite">丁寧体</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">3</td>
+                        <td>选择镜框</td>
+                        <td><span class="honorific-badge honorific-polite">丁寧体</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">4</td>
+                        <td>选择镜片（种类、涂层等）</td>
+                        <td><span class="honorific-badge honorific-standard">標準敬語</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">5</td>
+                        <td>确认订单和预计交货时间</td>
+                        <td><span class="honorific-badge honorific-polite">丁寧体</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">6</td>
+                        <td>付款 + 预约取货日期</td>
+                        <td><span class="honorific-badge honorific-polite">丁寧体</span></td>
+                    </tr>
+                    <tr>
+                        <td class="step-num">7</td>
+                        <td>最后确认（取货联系方式等）</td>
+                        <td><span class="honorific-badge honorific-polite">丁寧体</span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 对话脚本 -->
+            <div class="section">
+                <h2>3️⃣ 完整对话脚本</h2>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤1】进店 + 说明需求</strong>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">こんにちは。新しくメガネを作りたいんですけど。</div>
+                        <div class="option">【翻译】你好，我想新配一副眼镜。</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">かしこまりました。では、まず視力検査をさせていただきます。</div>
+                        <div class="option">【翻译】好的。那么首先让我给您做一个视力检查。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">分かりました。よろしくお願いします。</div>
+                        <div class="option">【翻译】好的，谢谢。</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤2】视力检查</strong>
+
+                    <div class="dialog-them">
+                        <div class="label">店员会说：</div>
+                        <div class="text">こちらで見てみてください。①は見えますか？</div>
+                        <div class="option">【翻译】从这里看。①看得见吗？</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说（回答示例）：</div>
+                        <div class="text">はい、見えます。</div>
+                        <div class="option">【翻译】是的，看得见。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">如果看不清，说：</div>
+                        <div class="text">すみません、少し見えにくいです。</div>
+                        <div class="option">【翻译】抱歉，有点看不清。</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">检查完后店员会说：</div>
+                        <div class="text">では、測定結果をお伝えします。右目が-3.5、左目が-3.25です。乱視はありません。</div>
+                        <div class="option">【翻译】那么，我来告诉您检查结果。右眼-3.5，左眼-3.25。没有散光。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">分かりました。これで合いますか？</div>
+                        <div class="option">【翻译】好的。这个度数可以吗？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">はい、これで大丈夫です。</div>
+                        <div class="option">【翻译】是的，没问题。</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤3】选择镜框</strong>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">では、フレームを選びたいんですけど。どんな種類がありますか？</div>
+                        <div class="option">【翻译】那么，我想选框架。有哪些款式？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">いろいろなスタイルがございます。こちらは最新の流行モデルです。</div>
+                        <div class="option">【翻译】有各种各样的款式。这个是最新的流行款。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说（选中后）：</div>
+                        <div class="text">この黒いフレームが気に入りました。サイズは合いますか？かけてみてもいいですか？</div>
+                        <div class="option">【翻译】我喜欢这个黑色框架。尺码合适吗？能试一下吗？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">もちろんです。かけてみてください。どうですか？</div>
+                        <div class="option">【翻译】当然可以。试试看。怎么样？</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">いい感じです。これでお願いします。</div>
+                        <div class="option">【翻译】很不错。就要这个了。</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤4】选择镜片</strong>
+
+                    <div class="dialog-them">
+                        <div class="label">店员会说：</div>
+                        <div class="text">では、レンズについてお聞きしたいんですけど。普通のレンズでいいですか？それとも、特殊なコーティングをご希望ですか？</div>
+                        <div class="option">【翻译】那么，关于镜片，想要普通镜片吗？还是想要特殊涂层？</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说（选择示例1-普通）：</div>
+                        <div class="text">普通のレンズでお願いします。</div>
+                        <div class="option">【翻译】普通镜片就可以。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说（选择示例2-防蓝光）：</div>
+                        <div class="text">ブルーライトカットのコーティングがいいです。追加料金はいくらですか？</div>
+                        <div class="option">【翻译】我要防蓝光涂层。额外费用是多少？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">ブルーライトカットですと、プラス3,000円となります。</div>
+                        <div class="option">【翻译】防蓝光的话，要加3千日元。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">分かりました。では、ブルーライトカットでお願いします。</div>
+                        <div class="option">【翻译】好的。那就要防蓝光涂层。</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤5】确认订单和交货时间</strong>
+
+                    <div class="dialog-them">
+                        <div class="label">店员会说：</div>
+                        <div class="text">かかります日数は、大体3日から5日ぐらいです。</div>
+                        <div class="option">【翻译】大概需要3到5天。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">分かりました。いつごろ取りに来ればいいですか？</div>
+                        <div class="option">【翻译】好的。什么时候来取？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">そうですね。金曜日の午後以降でしたら、間に合うと思います。</div>
+                        <div class="option">【翻译】那样的话，周五下午以后应该能好。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">では、金曜日の夕方に取りに来たいんですけど、何時までですか？</div>
+                        <div class="option">【翻译】那我想周五傍晚来取。营业到几点？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">20時までやっておりますので、大丈夫です。</div>
+                        <div class="option">【翻译】我们营业到晚上8点，可以的。</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤6】付款</strong>
+
+                    <div class="dialog-them">
+                        <div class="label">店员会说：</div>
+                        <div class="text">では、お支払いの方、お願いいたします。全部で8,500円です。</div>
+                        <div class="option">【翻译】那么请付款。总共8千5百日元。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">カード払いはできますか？</div>
+                        <div class="option">【翻译】可以用卡吗？</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员常见回应：</div>
+                        <div class="text">はい、大丈夫です。</div>
+                        <div class="option">【翻译】是的，可以。</div>
+                    </div>
+                </div>
+
+                <div class="dialog-section">
+                    <strong style="color: var(--primary); font-size: 1.05em;">【步骤7】最后确认</strong>
+
+                    <div class="dialog-them">
+                        <div class="label">店员会说：</div>
+                        <div class="text">では、ご連絡先を教えていただけますか？できましたら、お電話でご連絡いたします。</div>
+                        <div class="option">【翻译】那么，能告诉我联系方式吗？好了以后我会电话通知您。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">分かりました。携帯は090-xxxx-xxxxです。</div>
+                        <div class="option">【翻译】好的。我的手机号是090-xxxx-xxxx。</div>
+                    </div>
+
+                    <div class="dialog-them">
+                        <div class="label">店员会说：</div>
+                        <div class="text">かしこまりました。では、ご来店をお待ちしております。ありがとうございました。</div>
+                        <div class="option">【翻译】好的。我们期待您来取。谢谢您。</div>
+                    </div>
+
+                    <div class="dialog-you">
+                        <div class="label">你说：</div>
+                        <div class="text">ありがとうございました。</div>
+                        <div class="option">【翻译】谢谢。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 关键表达 -->
+            <div class="section">
+                <h2>4️⃣ 关键表达与难点</h2>
+
+                <div class="tips-box">
+                    <h4>🎯 高频短语（可直接背诵）</h4>
+                    <ul>
+                        <li><strong>新しくメガネを作りたい</strong> - 想新配眼镜</li>
+                        <li><strong>視力検査をお願いします</strong> - 请做视力检查</li>
+                        <li><strong>度数はどのくらいですか</strong> - 度数是多少？</li>
+                        <li><strong>乱視（らんし）はありますか</strong> - 有散光吗？</li>
+                        <li><strong>どのくらいで完成しますか</strong> - 大概什么时候能好？</li>
+                        <li><strong>ブルーライトカットをお願いします</strong> - 请要防蓝光涂层</li>
+                        <li><strong>納期（のうき）はいつですか</strong> - 交货时间是什么时候？</li>
+                        <li><strong>連絡先を教えていただけますか</strong> - 能告诉我联系方式吗？</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <h4>⚠️ 常见陷阱 & 文化礼仪</h4>
+                    <ul>
+                        <li><strong>度数数字的理解</strong> - 「-3.5」念成「マイナス三点五」，不是"minus 3.5"。要能听懂日语的度数表达</li>
+                        <li><strong>「見えますか」vs「見えにくいですか」</strong> - 检查时店员问"看得见吗"，要直接回答"是"或"否"，不要拖泥带水</li>
+                        <li><strong>乱視（散光）是常见话题</strong> - 如果店员提到「乱視」，这不是"疲劳"，而是一种屈光不正。要听得懂这个词</li>
+                        <li><strong>「フレームのみ」vs「メガネ一式」</strong> - 这两个概念不同。前者只是框架，后者是完整眼镜。要用对</li>
+                        <li><strong>预约取货很重要</strong> - 日本眼镜店通常会打电话确认，一定要提供正确的联系方式</li>
+                        <li><strong>不要催促</strong> - 说"這個能快一點嗎"（催促）在日本被认为不礼貌。应该问「早めでもいいですか」（能早一点吗）</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box">
+                    <h4>🆘 如果没听懂怎么办？</h4>
+                    <ul>
+                        <li><strong>度数没听清</strong>：「申し訳ありません。度数をもう一度書いていただけますか」（抱歉，能把度数再写一遍吗）</li>
+                        <li><strong>价格和时间没听清</strong>：「そういう費用と、納期についてもう一度お願いします」（关于费用和交货时间，能再说一遍吗）</li>
+                        <li><strong>整句没听懂</strong>：「申し訳ございません。日本語がまだ上手じゃなくて、もう一度ゆっくりお願いします」（抱歉，我的日语还不太好，能说慢一点吗）</li>
+                        <li><strong>专业术语</strong>：如果店员说的词你完全不懂（比如「非球面レンズ」），可以说「その言葉が分かりません」（我不懂这个词）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 学习笔记 -->
+            <div class="learning-note">
+                <h4>📚 学习笔记 - 场景B 知识点总结</h4>
+                <ul>
+                    <li><strong>视力检查流程</strong>：JINS的视力检查是免费的，通常用机器测量度数，然后店员让你确认"看得清吗"。整个过程不复杂，重点是听清数字</li>
+                    <li><strong>度数格式</strong>：日本用「-3.5」表示近视，括号内的数字越大度数越深。散光也会有单独的数字（通常以「×」或「C」标记）</li>
+                    <li><strong>镜片选择</strong>：默认是"普通单焦镜片"（通常4000-6000日元）。如果要防蓝光、变色、渐进式等，费用会增加。店员通常会主动提，但有时需要主动问</li>
+                    <li><strong>交货时间</strong>：大多数JINS承诺3-7天交货（视框架库存而定）。如果你急需，可以问「できるだけ早くお願いできますか」（能尽快吗）</li>
+                    <li><strong>关键日本文化</strong>：日本眼镜店非常看重"客户体验"和"精准度"。他们会反复确认你是否满意，这不是浪费时间，而是他们的专业精神</li>
+                    <li><strong>取货确认</strong>：好了以后，店员通常会打电话。如果没接到电话，应该主动打过去询问，而不是等着</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function switchTab(event, tabId) {
+            // 隐藏所有tab内容
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // 移除所有btn的active状态
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // 显示选中的tab
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Litchi's JP Notes</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: #1a73e8;
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --text-dark: #202124;
+    --text-gray: #5f6368;
+    --border: #dadce0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-light: #202124;
+      --bg-white: #292a2d;
+      --text-dark: #f8f9fa;
+      --text-gray: #bdc1c6;
+      --border: #5f6368;
+    }
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 2em; margin-bottom: 8px; color: var(--primary); }
+  .subtitle { color: var(--text-gray); margin-bottom: 30px; }
+  ul.pages { list-style: none; }
+  ul.pages li {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: box-shadow 0.2s;
+  }
+  ul.pages li:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  ul.pages a {
+    display: block;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+  ul.pages a .desc {
+    display: block;
+    font-weight: 400;
+    color: var(--text-gray);
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
+  footer { margin-top: 40px; color: var(--text-gray); font-size: 0.85em; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>📖 Litchi's JP Notes</h1>
+    <p class="subtitle">日本生活场景 · 日语实用对话整理</p>
+    <ul class="pages">
+      <li>
+        <a href="jins-eyeglasses-guide.html">
+          👓 JINS眼镜店攻略指南
+          <span class="desc">两大场景完全准备 — 只换镜框 / 全新配镜，含完整对话脚本与关键表达</span>
+        </a>
+      </li>
+    </ul>
+    <footer>Built with Claude Code</footer>
+  </div>
+</body>
+</html>
