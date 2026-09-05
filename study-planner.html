@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>记忆曲线学习计划 · Ebbinghaus Study Planner</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --primary:#1a73e8;
+  --primary-soft:#e8f0fe;
+  --accent:#ea4335;
+  --success:#34a853;
+  --success-soft:#e6f4ea;
+  --warning:#fbbc04;
+  --warning-soft:#fef7e0;
+  --bg-light:#f8f9fa;
+  --bg-white:#ffffff;
+  --bg-sunken:#eef1f4;
+  --text-dark:#202124;
+  --text-gray:#5f6368;
+  --text-faint:#9aa0a6;
+  --border:#dadce0;
+  --shadow:0 1px 2px rgba(0,0,0,.06),0 4px 14px -6px rgba(0,0,0,.12);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --primary:#8ab4f8;
+    --primary-soft:#28324a;
+    --accent:#f28b82;
+    --success:#81c995;
+    --success-soft:#1e3a2a;
+    --warning:#fdd663;
+    --warning-soft:#3c3418;
+    --bg-light:#202124;
+    --bg-white:#292a2d;
+    --bg-sunken:#18191a;
+    --text-dark:#f1f3f4;
+    --text-gray:#bdc1c6;
+    --text-faint:#80868b;
+    --border:#4a4d51;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -8px rgba(0,0,0,.6);
+  }
+}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans",sans-serif;
+  background:var(--bg-light);
+  color:var(--text-dark);
+  line-height:1.6;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 80px}
+header.top{text-align:center;margin-bottom:22px}
+header.top h1{margin:0 0 6px;font-size:1.8em;color:var(--primary)}
+header.top p{margin:0;color:var(--text-gray);font-size:.92em}
+
+.tabs{display:flex;gap:8px;justify-content:center;margin:20px 0 26px;flex-wrap:wrap}
+.tab-btn{
+  padding:10px 18px;border-radius:999px;border:1px solid var(--border);
+  background:var(--bg-white);color:var(--text-gray);font-size:.92em;font-weight:600;
+  cursor:pointer;transition:all .2s;
+}
+.tab-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fade .2s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.card{
+  background:var(--bg-white);border:1px solid var(--border);border-radius:12px;
+  box-shadow:var(--shadow);padding:20px 22px;margin-bottom:18px;
+}
+.card h2{margin:0 0 14px;font-size:1.15em}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.field{flex:1;min-width:160px;display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-size:.82em;color:var(--text-gray);font-weight:600}
+.field input[type=text],.field input[type=number],.field input[type=date],.field textarea,.field select{
+  padding:9px 11px;border:1px solid var(--border);border-radius:8px;background:var(--bg-light);
+  color:var(--text-dark);font-size:.95em;font-family:inherit;
+}
+.field textarea{resize:vertical;min-height:80px}
+.checkbox-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.checkbox-row input{width:16px;height:16px}
+.checkbox-row label{font-size:.9em;color:var(--text-gray)}
+
+.btn{
+  padding:9px 18px;border-radius:8px;border:1px solid var(--primary);background:var(--primary);
+  color:#fff;font-size:.9em;font-weight:600;cursor:pointer;transition:opacity .15s;
+}
+.btn:hover{opacity:.88}
+.btn.secondary{background:transparent;color:var(--primary)}
+.btn.danger{background:transparent;color:var(--accent);border-color:var(--accent)}
+.btn.small{padding:5px 12px;font-size:.82em}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+
+.plan-list{display:flex;flex-direction:column;gap:12px}
+.plan-item{
+  border:1px solid var(--border);border-radius:10px;padding:14px 16px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+  background:var(--bg-light);
+}
+.plan-item.active-plan{border-color:var(--primary);background:var(--primary-soft)}
+.plan-name{font-weight:700;font-size:1.02em}
+.plan-meta{font-size:.82em;color:var(--text-gray);margin-top:3px}
+.plan-progress{font-size:.78em;color:var(--primary);font-weight:600;margin-top:3px}
+.empty-hint{color:var(--text-faint);font-size:.9em;text-align:center;padding:24px 0}
+
+.cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+.cal-title{font-weight:700;font-size:1.05em}
+.cal-nav{display:flex;gap:8px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.cal-daylabel{text-align:center;font-size:.78em;color:var(--text-faint);font-weight:700;text-transform:uppercase;padding-bottom:4px}
+.cal-cell{
+  border:1px solid var(--border);border-radius:10px;padding:8px;min-height:118px;
+  background:var(--bg-light);display:flex;flex-direction:column;gap:5px;
+}
+.cal-cell.today{border-color:var(--primary);box-shadow:0 0 0 2px var(--primary-soft) inset}
+.cal-date{font-size:.78em;color:var(--text-faint);font-weight:600}
+.cal-chip{
+  font-size:.72em;border-radius:6px;padding:3px 6px;display:flex;align-items:center;gap:4px;
+  cursor:pointer;line-height:1.3;
+}
+.cal-chip.new{background:var(--primary-soft);color:var(--primary)}
+.cal-chip.review{background:var(--warning-soft);color:#8a6100}
+@media (prefers-color-scheme:dark){.cal-chip.review{color:var(--warning)}}
+.cal-chip.done{opacity:.45;text-decoration:line-through}
+.cal-chip input{margin:0}
+
+.lib-select{margin-bottom:16px}
+.unit-note{
+  border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px;background:var(--bg-light);
+}
+.unit-note-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.unit-note-head b{font-size:.92em}
+.unit-note textarea{width:100%}
+.unit-note-empty{color:var(--text-faint);font-size:.85em;white-space:pre-wrap}
+
+.badge{display:inline-block;padding:2px 8px;border-radius:5px;font-size:.72em;font-weight:700}
+.badge.new{background:var(--success-soft);color:var(--success)}
+.badge.review{background:var(--warning-soft);color:#8a6100}
+@media (prefers-color-scheme:dark){.badge.review{color:var(--warning)}}
+
+footer{margin-top:36px;text-align:center;color:var(--text-faint);font-size:.82em}
+.hint-box{
+  background:var(--primary-soft);border-left:4px solid var(--primary);border-radius:8px;
+  padding:12px 16px;font-size:.85em;color:var(--text-gray);margin-bottom:18px;
+}
+
+@media print{
+  .tabs,.btn-row,.no-print{display:none !important}
+  .tab-panel{display:block !important}
+  body{background:#fff;color:#000}
+  .card{box-shadow:none;border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>🧠 记忆曲线学习计划</h1>
+    <p>按艾宾浩斯遗忘曲线自动排复习日程 · 仿 learnhelper.com 精简版</p>
+  </header>
+
+  <div class="tabs no-print">
+    <button class="tab-btn active" data-tab="plans">📋 计划管理中心</button>
+    <button class="tab-btn" data-tab="calendar">📅 周历视图</button>
+    <button class="tab-btn" data-tab="library">📚 章节资料库</button>
+  </div>
+
+  <!-- ============ 计划管理中心 ============ -->
+  <div id="tab-plans" class="tab-panel active">
+    <div class="card">
+      <h2>➕ 新建学习计划</h2>
+      <div class="row">
+        <div class="field">
+          <label>计划名称</label>
+          <input type="text" id="f-name" placeholder="例：JLPT N1 单词">
+        </div>
+        <div class="field">
+          <label>单元前缀</label>
+          <input type="text" id="f-prefix" placeholder="例：Unit / 第" value="Unit">
+        </div>
+        <div class="field">
+          <label>开始日期</label>
+          <input type="date" id="f-start">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>每天新增单元数</label>
+          <input type="number" id="f-daily" min="1" value="1">
+        </div>
+        <div class="field">
+          <label>总单元数</label>
+          <input type="number" id="f-total" min="1" value="10">
+        </div>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="f-reverse">
+        <label for="f-reverse">反向复习（从最新单元开始安排）</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="btn-create-plan">创建计划</button>
+        <button class="btn secondary" id="btn-import">导入 JSON 备份</button>
+        <input type="file" id="file-import" accept="application/json" style="display:none">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📂 我的计划</h2>
+      <div id="plan-list" class="plan-list">
+        <div class="empty-hint">还没有计划，先在上方创建一个吧</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 周历视图 ============ -->
+  <div id="tab-calendar" class="tab-panel">
+    <div class="hint-box">💡 蓝色 = 新学单元　🟡 黄色 = 复习（按 1/2/4/7/15/30 天间隔自动生成）。点击色块可标记完成。</div>
+    <div class="card">
+      <div class="cal-header">
+        <div class="cal-title" id="cal-title">请选择一个计划</div>
+        <div class="cal-nav no-print">
+          <button class="btn small secondary" id="cal-prev">← 上周</button>
+          <button class="btn small secondary" id="cal-today">本周</button>
+          <button class="btn small secondary" id="cal-next">下周 →</button>
+          <button class="btn small" id="cal-print">🖨 打印</button>
+        </div>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+    </div>
+  </div>
+
+  <!-- ============ 章节资料库 ============ -->
+  <div id="tab-library" class="tab-panel">
+    <div class="card">
+      <h2>📚 章节资料库</h2>
+      <div class="field lib-select">
+        <label>为哪个单元添加笔记？</label>
+        <select id="lib-unit-select"></select>
+      </div>
+      <div class="field">
+        <label>笔记内容</label>
+        <textarea id="lib-note-text" placeholder="粘贴生词、要点或链接…"></textarea>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="btn-save-note">保存笔记</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>已保存的笔记</h2>
+      <div id="lib-note-list"><div class="empty-hint">暂无笔记</div></div>
+    </div>
+  </div>
+
+  <footer>数据仅保存在本地浏览器（localStorage），换设备或清理浏览器数据会丢失，请定期用「导出 JSON 备份」。</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var REVIEW_OFFSETS = [1,2,4,7,15,30]; // 艾宾浩斯简化复习间隔（天）
+  var STORAGE_KEY = "ebh_planner_state_v1";
+
+  var state = { plans: [], activePlanId: null };
+  try {
+    var raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) state = JSON.parse(raw);
+    if (!state.plans) state.plans = [];
+  } catch(e){}
+
+  function save(){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+  }
+
+  function uid(){ return "p" + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+  function pad(n){ return n<10 ? "0"+n : ""+n; }
+  function fmtDate(d){ return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
+  function parseDate(s){ var parts = s.split("-").map(Number); return new Date(parts[0], parts[1]-1, parts[2]); }
+  function addDays(d, n){ var r = new Date(d); r.setDate(r.getDate()+n); return r; }
+  function startOfWeek(d){ var r = new Date(d); r.setDate(r.getDate()-r.getDay()); r.setHours(0,0,0,0); return r; }
+
+  function getActivePlan(){
+    return state.plans.find(function(p){ return p.id === state.activePlanId; }) || null;
+  }
+
+  // ---------- schedule generation ----------
+  function buildSchedule(plan){
+    var events = [];
+    var start = parseDate(plan.startDate);
+    for (var u = 1; u <= plan.totalUnits; u++){
+      var groupIndex = Math.floor((u-1) / plan.dailyCount);
+      var learnDate = addDays(start, groupIndex);
+      var displayUnit = plan.reverse ? (plan.totalUnits - u + 1) : u;
+      events.push({ date: fmtDate(learnDate), unit: displayUnit, type: "new", occurrence: 0 });
+      REVIEW_OFFSETS.forEach(function(off, idx){
+        events.push({ date: fmtDate(addDays(learnDate, off)), unit: displayUnit, type: "review", occurrence: idx+1 });
+      });
+    }
+    return events;
+  }
+
+  function eventsByDate(plan){
+    var map = {};
+    buildSchedule(plan).forEach(function(ev){
+      if (!map[ev.date]) map[ev.date] = [];
+      map[ev.date].push(ev);
+    });
+    return map;
+  }
+
+  // ---------- tabs ----------
+  document.querySelectorAll(".tab-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll(".tab-btn").forEach(function(b){ b.classList.remove("active"); });
+      document.querySelectorAll(".tab-panel").forEach(function(p){ p.classList.remove("active"); });
+      btn.classList.add("active");
+      document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+      if (btn.dataset.tab === "calendar") renderCalendar();
+      if (btn.dataset.tab === "library") renderLibrary();
+    });
+  });
+
+  // ---------- plan management ----------
+  document.getElementById("f-start").value = fmtDate(new Date());
+
+  document.getElementById("btn-create-plan").addEventListener("click", function(){
+    var name = document.getElementById("f-name").value.trim();
+    var prefix = document.getElementById("f-prefix").value.trim() || "Unit";
+    var start = document.getElementById("f-start").value;
+    var daily = parseInt(document.getElementById("f-daily").value, 10) || 1;
+    var total = parseInt(document.getElementById("f-total").value, 10) || 1;
+    var reverse = document.getElementById("f-reverse").checked;
+    if (!name){ alert("请输入计划名称"); return; }
+    if (!start){ alert("请选择开始日期"); return; }
+
+    var plan = {
+      id: uid(), name: name, unitPrefix: prefix, startDate: start,
+      dailyCount: daily, totalUnits: total, reverse: reverse,
+      createdAt: fmtDate(new Date()), notes: {}, done: {}
+    };
+    state.plans.push(plan);
+    state.activePlanId = plan.id;
+    save();
+    document.getElementById("f-name").value = "";
+    renderPlans();
+    renderLibraryUnitSelect();
+  });
+
+  document.getElementById("btn-import").addEventListener("click", function(){
+    document.getElementById("file-import").click();
+  });
+  document.getElementById("file-import").addEventListener("change", function(e){
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(evt){
+      try {
+        var imported = JSON.parse(evt.target.result);
+        if (imported && imported.id && imported.startDate){
+          imported.id = uid(); // avoid collisions
+          state.plans.push(imported);
+          state.activePlanId = imported.id;
+          save();
+          renderPlans();
+          alert("导入成功：" + imported.name);
+        } else {
+          alert("文件格式不正确");
+        }
+      } catch(err){ alert("解析失败：" + err.message); }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  });
+
+  function planProgressText(plan){
+    var sched = buildSchedule(plan);
+    var doneCount = Object.keys(plan.done || {}).length;
+    return doneCount + " / " + sched.length + " 项已完成打卡";
+  }
+
+  function renderPlans(){
+    var list = document.getElementById("plan-list");
+    if (!state.plans.length){
+      list.innerHTML = '<div class="empty-hint">还没有计划，先在上方创建一个吧</div>';
+      return;
+    }
+    list.innerHTML = "";
+    state.plans.forEach(function(plan){
+      var el = document.createElement("div");
+      el.className = "plan-item" + (plan.id === state.activePlanId ? " active-plan" : "");
+      el.innerHTML =
+        '<div>' +
+          '<div class="plan-name">' + escapeHtml(plan.name) + '</div>' +
+          '<div class="plan-meta">' + plan.unitPrefix + ' × ' + plan.totalUnits + '　起始 ' + plan.startDate + '　每天 ' + plan.dailyCount + ' 个新单元' + (plan.reverse ? '　· 反向复习' : '') + '</div>' +
+          '<div class="plan-progress">' + planProgressText(plan) + '</div>' +
+        '</div>' +
+        '<div class="btn-row">' +
+          '<button class="btn small" data-act="open" data-id="' + plan.id + '">打开日历</button>' +
+          '<button class="btn small secondary" data-act="export" data-id="' + plan.id + '">导出</button>' +
+          '<button class="btn small danger" data-act="delete" data-id="' + plan.id + '">删除</button>' +
+        '</div>';
+      list.appendChild(el);
+    });
+    list.querySelectorAll("button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var id = btn.dataset.id, act = btn.dataset.act;
+        if (act === "open"){
+          state.activePlanId = id; save(); renderPlans();
+          document.querySelector('.tab-btn[data-tab="calendar"]').click();
+        } else if (act === "delete"){
+          if (confirm("确定删除这个计划吗？此操作不可撤销。")){
+            state.plans = state.plans.filter(function(p){ return p.id !== id; });
+            if (state.activePlanId === id) state.activePlanId = state.plans.length ? state.plans[0].id : null;
+            save(); renderPlans(); renderLibraryUnitSelect();
+          }
+        } else if (act === "export"){
+          var plan = state.plans.find(function(p){ return p.id === id; });
+          var blob = new Blob([JSON.stringify(plan, null, 2)], { type: "application/json" });
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = plan.name.replace(/[^a-zA-Z0-9一-龥]+/g, "_") + ".json";
+          a.click();
+        }
+      });
+    });
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+    });
+  }
+
+  // ---------- calendar ----------
+  var calWeekStart = startOfWeek(new Date());
+
+  document.getElementById("cal-prev").addEventListener("click", function(){ calWeekStart = addDays(calWeekStart, -7); renderCalendar(); });
+  document.getElementById("cal-next").addEventListener("click", function(){ calWeekStart = addDays(calWeekStart, 7); renderCalendar(); });
+  document.getElementById("cal-today").addEventListener("click", function(){ calWeekStart = startOfWeek(new Date()); renderCalendar(); });
+  document.getElementById("cal-print").addEventListener("click", function(){ window.print(); });
+
+  function renderCalendar(){
+    var plan = getActivePlan();
+    var titleEl = document.getElementById("cal-title");
+    var grid = document.getElementById("cal-grid");
+    grid.innerHTML = "";
+
+    if (!plan){
+      titleEl.textContent = "请先在「计划管理中心」创建或打开一个计划";
+      return;
+    }
+    titleEl.textContent = plan.name + "　" + fmtDate(calWeekStart) + " ~ " + fmtDate(addDays(calWeekStart,6));
+
+    var map = eventsByDate(plan);
+    var todayStr = fmtDate(new Date());
+    var dayNames = ["日","一","二","三","四","五","六"];
+
+    dayNames.forEach(function(dn){
+      var lbl = document.createElement("div");
+      lbl.className = "cal-daylabel";
+      lbl.textContent = "周" + dn;
+      grid.appendChild(lbl);
+    });
+
+    for (var i = 0; i < 7; i++){
+      var d = addDays(calWeekStart, i);
+      var dstr = fmtDate(d);
+      var cell = document.createElement("div");
+      cell.className = "cal-cell" + (dstr === todayStr ? " today" : "");
+      var dateLabel = document.createElement("div");
+      dateLabel.className = "cal-date";
+      dateLabel.textContent = (d.getMonth()+1) + "/" + d.getDate();
+      cell.appendChild(dateLabel);
+
+      (map[dstr] || []).sort(function(a,b){ return a.unit - b.unit; }).forEach(function(ev){
+        var key = dstr + "_" + ev.unit + "_" + ev.type + "_" + ev.occurrence;
+        var chip = document.createElement("label");
+        var isDone = !!(plan.done || {})[key];
+        chip.className = "cal-chip " + ev.type + (isDone ? " done" : "");
+        var label = plan.unitPrefix + ev.unit + (ev.type === "new" ? " 新学" : " 复习" + ev.occurrence);
+        chip.innerHTML = '<input type="checkbox" ' + (isDone ? "checked" : "") + '> ' + escapeHtml(label);
+        chip.querySelector("input").addEventListener("change", function(){
+          if (!plan.done) plan.done = {};
+          if (this.checked) plan.done[key] = true; else delete plan.done[key];
+          save();
+          renderCalendar();
+          renderPlans();
+        });
+        cell.appendChild(chip);
+      });
+
+      grid.appendChild(cell);
+    }
+  }
+
+  // ---------- material library ----------
+  function renderLibraryUnitSelect(){
+    var plan = getActivePlan();
+    var sel = document.getElementById("lib-unit-select");
+    sel.innerHTML = "";
+    if (!plan){
+      sel.innerHTML = '<option value="">请先创建/打开一个计划</option>';
+      return;
+    }
+    for (var u = 1; u <= plan.totalUnits; u++){
+      var opt = document.createElement("option");
+      opt.value = u;
+      opt.textContent = plan.unitPrefix + u;
+      sel.appendChild(opt);
+    }
+    sel.addEventListener("change", loadNoteIntoTextarea);
+    loadNoteIntoTextarea();
+  }
+
+  function loadNoteIntoTextarea(){
+    var plan = getActivePlan();
+    var sel = document.getElementById("lib-unit-select");
+    var ta = document.getElementById("lib-note-text");
+    if (!plan || !sel.value){ ta.value = ""; return; }
+    ta.value = (plan.notes || {})[sel.value] || "";
+  }
+
+  document.getElementById("btn-save-note").addEventListener("click", function(){
+    var plan = getActivePlan();
+    if (!plan){ alert("请先创建/打开一个计划"); return; }
+    var sel = document.getElementById("lib-unit-select");
+    var ta = document.getElementById("lib-note-text");
+    if (!sel.value) return;
+    if (!plan.notes) plan.notes = {};
+    plan.notes[sel.value] = ta.value;
+    save();
+    renderLibrary();
+  });
+
+  function renderLibrary(){
+    renderLibraryUnitSelect();
+    var plan = getActivePlan();
+    var list = document.getElementById("lib-note-list");
+    if (!plan || !plan.notes || !Object.keys(plan.notes).length){
+      list.innerHTML = '<div class="empty-hint">暂无笔记</div>';
+      return;
+    }
+    list.innerHTML = "";
+    Object.keys(plan.notes).sort(function(a,b){ return a-b; }).forEach(function(u){
+      var text = plan.notes[u];
+      if (!text) return;
+      var el = document.createElement("div");
+      el.className = "unit-note";
+      el.innerHTML = '<div class="unit-note-head"><b>' + escapeHtml(plan.unitPrefix + u) + '</b></div><div class="unit-note-empty">' + escapeHtml(text) + '</div>';
+      list.appendChild(el);
+    });
+    if (!list.children.length) list.innerHTML = '<div class="empty-hint">暂无笔记</div>';
+  }
+
+  // ---------- init ----------
+  renderPlans();
+  renderLibraryUnitSelect();
+})();
+</script>
+</body>
+</html>
