@@ -217,6 +217,7 @@ footer{max-width:900px;margin:0 auto;padding:30px 20px 10px;color:var(--ink-fain
 
 <div class="scenario-switch">
   <button class="sw-btn active" data-scenario="car">🚗 中古車売り場</button>
+  <button class="sw-btn" data-scenario="carcall">📞 中古車電話確認</button>
   <button class="sw-btn" data-scenario="jins">👓 JINS眼镜店</button>
   <button class="sw-btn" data-scenario="call">📞 バイト面接電話</button>
   <button class="sw-btn" data-scenario="osk">🏊 OSK水泳パーソナル</button>
@@ -1946,6 +1947,360 @@ footer{max-width:900px;margin:0 auto;padding:30px 20px 10px;color:var(--ink-fain
 </div>
 </div>
 <!-- /scenario-konbini -->
+
+<div id="scenario-carcall" class="scenario-block">
+
+<nav class="tocbar"><div class="tocbar-inner">
+  <a href="#carcall-bg">背景知識</a>
+  <a href="#carcall-vocab">語彙</a>
+  <a href="#carcall-flow">流れ</a>
+  <a href="#carcall-dialogue">会話</a>
+  <a href="#carcall-buy">購入後の手続き</a>
+  <a href="#carcall-phrases">キーフレーズ</a>
+  <a href="#carcall-traps">落とし穴</a>
+  <a href="#carcall-ask">聞き返し方</a>
+  <a href="#carcall-notes">学習メモ</a>
+</div></nav>
+
+<div class="wrap">
+
+<section id="carcall-bg">
+  <div class="sec-head">
+    <div class="sec-num">01 / BACKGROUND</div>
+    <h2>背景知識速覧</h2>
+    <p class="sec-desc">来店前の「在庫確認の電話」の位置づけと、当たる先の実態を先に押さえておきます。想定車両：スズキ アルト 660 L（支払総額 101.5万円、管理番号 ccAU7054988853）@ スズキ岡山販売 スズキアリーナ西岡山。</p>
+  </div>
+
+  <div class="info-grid">
+    <div class="card">
+      <h3>制度背景</h3>
+      <ul>
+        <li>中古車ポータル（<ruby>中古車<rt>ちゅうこしゃ</rt></ruby>EX、カーセンサー、グーネットなど）の<ruby>在庫<rt>ざいこ</rt></ruby>表示はリアルタイムではないことが多い。同じ車を複数人が同時に検討していたり、すでに<ruby>商談中<rt>しょうだんちゅう</rt></ruby>でもサイト上は「在庫あり」のままのケースがある。</li>
+        <li>そのため来店前に電話で在庫を確認するのは日本の中古車購入では標準的な流れで、スタッフもこの種の問い合わせには慣れている。</li>
+        <li>掲載サイトの電話番号（<b>0078-60</b> から始まるもの）は<ruby>転送<rt>てんそう</rt></ruby>用のナビダイヤルで、どの車両ページから発信したかを判別するために番号が車両ごとに割り当てられている。番号は掲載ページの「電話する」ボタンを実際に押して都度確認するのが確実。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>電話で必ず伝えること</h3>
+      <ul>
+        <li><ruby>管理<rt>かんり</rt>番号<rt>ばんごう</rt></ruby>（ccAU7054988853）：車種名だけだと同じ「アルト」の他個体と混同されるため必須。</li>
+        <li>希望の来店日時（今回は「本日の午後」）。</li>
+        <li>同行者の有無（複数人で行く場合は伝えておくと案内がスムーズ）。</li>
+        <li><ruby>試乗<rt>しじょう</rt></ruby>を希望するなら<ruby>運転<rt>うんてん</rt>免許証<rt>めんきょしょう</rt></ruby>が必要か、電話で先に確認しておく。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>⚠️ よくある勘違い</h3>
+      <ul>
+        <li>「在庫あり」＝その日必ず見られる、ではない。<ruby>商談中<rt>しょうだんちゅう</rt></ruby>で確保できない可能性もある。</li>
+        <li>電話は無料で済む問い合わせで、この時点では金銭のやり取りは発生しない。</li>
+        <li>今日その場で契約できたとしても、その日のうちに車に乗って帰れるわけではない（詳しくは05を参照）。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="carcall-vocab">
+  <div class="sec-head">
+    <div class="sec-num">02 / VOCABULARY</div>
+    <h2>分類語彙庫</h2>
+    <p class="sec-desc">場面ごとに27語。すべてルビ付き。</p>
+  </div>
+
+  <div class="vocab-tabs">
+    <button class="vtab active" data-vt="a">A・電話の切り出し</button>
+    <button class="vtab" data-vt="b">B・在庫確認</button>
+    <button class="vtab" data-vt="c">C・来店・道順</button>
+    <button class="vtab" data-vt="d">D・購入後の手続き</button>
+  </div>
+
+  <div class="vpanel active" data-vp="a">
+    <table class="vocabtable">
+      <tr><th>日本語</th><th>意味</th><th>使用例</th></tr>
+      <tr><td class="word-ja"><ruby>忙<rt>いそが</rt></ruby>しいところ<ruby>恐縮<rt>きょうしゅく</rt></ruby></td><td class="word-zh">百忙中打扰</td><td class="word-ex">お忙しいところ恐縮ですが。</td></tr>
+      <tr><td class="word-ja"><ruby>伺<rt>うかが</rt></ruby>う</td><td class="word-zh">（自谦语）请教、前往</td><td class="word-ex">〜について伺いたいのですが。</td></tr>
+      <tr><td class="word-ja"><ruby>中古車<rt>ちゅうこしゃ</rt></ruby></td><td class="word-zh">二手车</td><td class="word-ex">中古車の在庫を確認したいのですが。</td></tr>
+      <tr><td class="word-ja"><ruby>掲載<rt>けいさい</rt></ruby></td><td class="word-zh">刊登、登载</td><td class="word-ex">サイトに掲載されている車両です。</td></tr>
+      <tr><td class="word-ja"><ruby>管理<rt>かんり</rt>番号<rt>ばんごう</rt></ruby></td><td class="word-zh">车辆管理编号</td><td class="word-ex">管理番号はccAU7054988853です。</td></tr>
+      <tr><td class="word-ja"><ruby>担当者<rt>たんとうしゃ</rt></ruby></td><td class="word-zh">负责人</td><td class="word-ex">担当者につないでいただけますか。</td></tr>
+      <tr><td class="word-ja"><ruby>折<rt>お</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>す</td><td class="word-zh">回电</td><td class="word-ex">折り返しご連絡いたします。</td></tr>
+    </table>
+  </div>
+
+  <div class="vpanel" data-vp="b">
+    <table class="vocabtable">
+      <tr><th>日本語</th><th>意味</th><th>使用例</th></tr>
+      <tr><td class="word-ja"><ruby>在庫<rt>ざいこ</rt></ruby></td><td class="word-zh">库存</td><td class="word-ex">在庫確認のお電話をさせていただきました。</td></tr>
+      <tr><td class="word-ja"><ruby>商談中<rt>しょうだんちゅう</rt></ruby></td><td class="word-zh">正在洽谈中</td><td class="word-ex">その車両は現在商談中です。</td></tr>
+      <tr><td class="word-ja"><ruby>成約済<rt>せいやくず</rt></ruby>み</td><td class="word-zh">已成交</td><td class="word-ex">昨日成約済みとなりました。</td></tr>
+      <tr><td class="word-ja"><ruby>確保<rt>かくほ</rt></ruby></td><td class="word-zh">保留、确保</td><td class="word-ex">確保できるかどうかは分かりかねます。</td></tr>
+      <tr><td class="word-ja"><ruby>試乗<rt>しじょう</rt></ruby></td><td class="word-zh">试乘</td><td class="word-ex">本日試乗させていただけますか。</td></tr>
+      <tr><td class="word-ja"><ruby>入荷<rt>にゅうか</rt></ruby></td><td class="word-zh">到货</td><td class="word-ex">同条件の車両が入荷しましたら。</td></tr>
+      <tr><td class="word-ja"><ruby>展示<rt>てんじ</rt></ruby></td><td class="word-zh">展示（陈列）</td><td class="word-ex">展示会の関係で対応が難しいです。</td></tr>
+    </table>
+  </div>
+
+  <div class="vpanel" data-vp="c">
+    <table class="vocabtable">
+      <tr><th>日本語</th><th>意味</th><th>使用例</th></tr>
+      <tr><td class="word-ja"><ruby>本日<rt>ほんじつ</rt></ruby>の<ruby>午後<rt>ごご</rt></ruby></td><td class="word-zh">今天下午</td><td class="word-ex">本日の午後に伺いたいのですが。</td></tr>
+      <tr><td class="word-ja"><ruby>都合<rt>つごう</rt></ruby></td><td class="word-zh">方便与否</td><td class="word-ex">ご都合いかがでしょうか。</td></tr>
+      <tr><td class="word-ja"><ruby>電車<rt>でんしゃ</rt></ruby></td><td class="word-zh">电车</td><td class="word-ex">電車で庭瀬駅から伺おうと思っています。</td></tr>
+      <tr><td class="word-ja"><ruby>道順<rt>みちじゅん</rt></ruby></td><td class="word-zh">路线、走法</td><td class="word-ex">駅からの道順を教えていただけますか。</td></tr>
+      <tr><td class="word-ja"><ruby>徒歩<rt>とほ</rt></ruby></td><td class="word-zh">步行</td><td class="word-ex">徒歩でも行けますか。</td></tr>
+      <tr><td class="word-ja">バス<ruby>停<rt>てい</rt></ruby></td><td class="word-zh">公交车站</td><td class="word-ex">バス停の名前を教えてください。</td></tr>
+    </table>
+  </div>
+
+  <div class="vpanel" data-vp="d">
+    <table class="vocabtable">
+      <tr><th>日本語</th><th>意味</th><th>使用例</th></tr>
+      <tr><td class="word-ja"><ruby>納車<rt>のうしゃ</rt></ruby></td><td class="word-zh">交车、纳车</td><td class="word-ex">納車まではどのくらいかかりますか。</td></tr>
+      <tr><td class="word-ja"><ruby>名義<rt>めいぎ</rt>変更<rt>へんこう</rt></ruby></td><td class="word-zh">车辆过户</td><td class="word-ex">名義変更の手続きをお願いします。</td></tr>
+      <tr><td class="word-ja"><ruby>保管<rt>ほかん</rt>場所<rt>ばしょ</rt>届出<rt>とどけで</rt></ruby></td><td class="word-zh">保管场所申报</td><td class="word-ex">保管場所届出はどちらで行いますか。</td></tr>
+      <tr><td class="word-ja"><ruby>任意<rt>にんい</rt>保険<rt>ほけん</rt></ruby></td><td class="word-zh">任意保险</td><td class="word-ex">任意保険の加入について教えてください。</td></tr>
+      <tr><td class="word-ja"><ruby>自賠責<rt>じばいせき</rt>保険<rt>ほけん</rt></ruby></td><td class="word-zh">自赔责保险（法定强制险）</td><td class="word-ex">自賠責保険は総額に含まれていますか。</td></tr>
+      <tr><td class="word-ja"><ruby>住民票<rt>じゅうみんひょう</rt></ruby></td><td class="word-zh">住民票</td><td class="word-ex">住民票はいつ発行のものが必要ですか。</td></tr>
+      <tr><td class="word-ja"><ruby>委任状<rt>いにんじょう</rt></ruby></td><td class="word-zh">委托书</td><td class="word-ex">委任状はそちらでご用意いただけますか。</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="carcall-flow">
+  <div class="sec-head">
+    <div class="sec-num">03 / PROCESS</div>
+    <h2>電話の流れ</h2>
+    <p class="sec-desc">かけてから切るまでの6ステップ。</p>
+  </div>
+  <ul class="steps">
+    <li class="step"><div class="step-num"></div><div class="step-body"><b>店名を確認する</b><p>ナビダイヤル経由のため、まず「スズキアリーナ西岡山さんでしょうか」と確認する。</p></div><div class="keigo">標準敬語</div></li>
+    <li class="step"><div class="step-num"></div><div class="step-body"><b>用件と管理番号を伝える</b><p>サイト掲載の車両（管理番号）について在庫確認の電話である旨を伝える。</p></div><div class="keigo">標準敬語</div></li>
+    <li class="step"><div class="step-num"></div><div class="step-body"><b>在庫状況を聞く</b><p>まだ在庫があるか、確保できるかを確認する。</p></div><div class="keigo">標準敬語</div></li>
+    <li class="step"><div class="step-num"></div><div class="step-body"><b>来店日時を提案する</b><p>「本日の午後」など具体的な時間帯を伝え、都合を尋ねる。</p></div><div class="keigo">丁寧体</div></li>
+    <li class="step"><div class="step-num"></div><div class="step-body"><b>付随情報を確認する</b><p>電車で行く場合の道順、試乗の要否、契約した場合の納車・保険の流れなどを追加で聞く。</p></div><div class="keigo">丁寧体</div></li>
+    <li class="step"><div class="step-num"></div><div class="step-body"><b>お礼を言って切る</b><p>「よろしくお願いいたします」「失礼いたします」で締める。</p></div><div class="keigo">標準敬語</div></li>
+  </ul>
+</section>
+
+<section id="carcall-dialogue">
+  <div class="sec-head">
+    <div class="sec-num">04 / DIALOGUE</div>
+    <h2>5つの分岐会話</h2>
+    <p class="sec-desc">同じ電話でも展開次第で言うべきことが変わります。5パターンで練習。</p>
+  </div>
+
+  <div class="branch-tabs">
+    <button class="btab active" data-branch="a"><span class="dot"></span>✅ 理想</button>
+    <button class="btab" data-branch="b"><span class="dot"></span>⚠️ つまずき</button>
+    <button class="btab" data-branch="c"><span class="dot"></span>🔄 多選</button>
+    <button class="btab" data-branch="d"><span class="dot"></span>🎯 交渉</button>
+    <button class="btab" data-branch="e"><span class="dot"></span>❌ 断念</button>
+  </div>
+
+  <div class="bpanel active" data-bp="a">
+    <div class="branch-title">✅ 情況A：在庫があり、そのまま今日の午後に決まる</div>
+    <div class="line me"><div class="line-head"><span class="line-who">あなた</span><span class="line-keigo">標準敬語</span></div>
+      <div class="line-ja ja">もしもし、お<ruby>忙<rt>いそが</rt></ruby>しいところ<ruby>恐縮<rt>きょうしゅく</rt></ruby>です。スズキアリーナ西岡山さんでしょうか。</div>
+      <div class="line-zh">喂，不好意思打扰。请问是铃木Arena西冈山吗？</div></div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja">はい、スズキアリーナ西岡山でございます。</div>
+      <div class="line-zh">是的，这里是铃木Arena西冈山。</div></div>
+    <div class="line me"><div class="line-head"><span class="line-who">あなた</span></div>
+      <div class="line-ja ja">サイトに<ruby>掲載<rt>けいさい</rt></ruby>されている<ruby>車両<rt>しゃりょう</rt></ruby>（<ruby>管理<rt>かんり</rt>番号<rt>ばんごう</rt></ruby>ccAU7054988853、アルトの2025年式）について、<ruby>在庫<rt>ざいこ</rt></ruby><ruby>確認<rt>かくにん</rt></ruby>のお電話をさせていただきました。</div>
+      <div class="line-zh">我是想确认一下网站上那辆车（编号ccAU7054988853，Alto 2025年式）的库存情况。</div></div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja">少々お待ちください…はい、まだ<ruby>在庫<rt>ざいこ</rt></ruby>ございます。<ruby>来店<rt>らいてん</rt></ruby>のご予定はいつ頃でしょうか。</div>
+      <div class="line-zh">请稍等…是的，还有库存。请问打算什么时候过来呢？</div></div>
+    <div class="line me"><div class="line-head"><span class="line-who">あなた</span></div>
+      <div class="line-ja ja"><ruby>本日<rt>ほんじつ</rt></ruby>の<ruby>午後<rt>ごご</rt></ruby>に<ruby>伺<rt>うかが</rt></ruby>いたいのですが、ご<ruby>都合<rt>つごう</rt></ruby>いかがでしょうか。14<ruby>時<rt>じ</rt></ruby>ごろを<ruby>予定<rt>よてい</rt></ruby>しております。</div>
+      <div class="line-zh">想今天下午过去，方便吗？打算大概14点左右。</div></div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja">14<ruby>時<rt>じ</rt></ruby>ごろでしたら<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です。<ruby>担当<rt>たんとう</rt></ruby>の<ruby>者<rt>もの</rt></ruby>がご<ruby>案内<rt>あんない</rt></ruby>いたします。</div>
+      <div class="line-zh">14点左右没问题，会有负责人接待您。</div></div>
+    <div class="line me"><div class="line-head"><span class="line-who">あなた（道を聞く）</span></div>
+      <div class="line-ja ja"><ruby>電車<rt>でんしゃ</rt></ruby>で<ruby>庭瀬<rt>にわせ</rt></ruby>駅から<ruby>伺<rt>うかが</rt></ruby>おうと<ruby>思<rt>おも</rt></ruby>っているのですが、<ruby>駅<rt>えき</rt></ruby>からの<ruby>道順<rt>みちじゅん</rt></ruby>を<ruby>教<rt>おし</rt></ruby>えていただけますか。</div>
+      <div class="line-zh">我打算坐电车到庭瀬站过去，能告诉我从车站怎么走吗？</div></div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja"><ruby>庭瀬<rt>にわせ</rt></ruby>駅からですと<ruby>徒歩<rt>とほ</rt></ruby>では少し<ruby>距離<rt>きょり</rt></ruby>がございますので、バスかタクシーのご<ruby>利用<rt>りよう</rt></ruby>をおすすめします。</div>
+      <div class="line-zh">从庭瀬站走路稍微有点距离，建议坐公交车或出租车。</div>
+      <div class="line-alt"><b>接着可以问：</b>バスでしたら<ruby>何分<rt>なんぷん</rt></ruby>ほどかかりますか（坐公交车大概要几分钟）</div></div>
+    <div class="line me"><div class="line-head"><span class="line-who">あなた（収線）</span></div>
+      <div class="line-ja ja">ありがとうございます。それでは<ruby>本日<rt>ほんじつ</rt></ruby>の<ruby>午後<rt>ごご</rt></ruby>、よろしくお<ruby>願<rt>ねが</rt></ruby>いいたします。<ruby>失礼<rt>しつれい</rt></ruby>いたします。</div>
+      <div class="line-zh">谢谢，那今天下午就麻烦您了，先挂了。</div></div>
+  </div>
+
+  <div class="bpanel" data-bp="b">
+    <div class="branch-title">⚠️ 情況B：商談中で確保できるか分からない</div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja">申し訳ございません、その<ruby>車両<rt>しゃりょう</rt></ruby>は<ruby>現在<rt>げんざい</rt></ruby><ruby>他<rt>ほか</rt></ruby>のお<ruby>客様<rt>きゃくさま</rt></ruby>が<ruby>商談中<rt>しょうだんちゅう</rt></ruby>でして、<ruby>確保<rt>かくほ</rt></ruby>できるかどうかは<ruby>分<rt>わ</rt></ruby>かりかねます。</div>
+      <div class="line-zh">很抱歉，这辆车目前有其他客人正在洽谈，能否确保不好说。</div></div>
+    <div class="line me"><div class="line-head"><span class="line-who">あなた</span></div>
+      <div class="line-ja ja">そうなんですね。もし<ruby>商談<rt>しょうだん</rt></ruby>がまとまらなかった<ruby>場合<rt>ばあい</rt></ruby>、こちらにご<ruby>連絡<rt>れんらく</rt></ruby>いただくことは<ruby>可能<rt>かのう</rt></ruby>でしょうか。</div>
+      <div class="line-zh">这样啊，如果最后没谈成的话，能联系我一下吗？</div>
+      <div class="line-alt"><b>他の言い方：</b>では、<ruby>在庫<rt>ざいこ</rt></ruby>が<ruby>確定<rt>かくてい</rt></ruby>し<ruby>次第<rt>しだい</rt></ruby>お<ruby>電話<rt>でんわ</rt></ruby>いただけますか。</div></div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja">かしこまりました。<ruby>担当<rt>たんとう</rt></ruby>より<ruby>折<rt>お</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>しご<ruby>連絡<rt>れんらく</rt></ruby>させていただきます。</div>
+      <div class="line-zh">好的，负责人会稍后回电给您。</div></div>
+  </div>
+
+  <div class="bpanel" data-bp="c">
+    <div class="branch-title">🔄 情況C：試乘・支払い方法について聞く</div>
+    <div class="line me"><div class="line-head"><span class="line-who">あなた</span></div>
+      <div class="line-ja ja"><ruby>本日<rt>ほんじつ</rt></ruby><ruby>試乗<rt>しじょう</rt></ruby>させていただくことは<ruby>可能<rt>かのう</rt></ruby>でしょうか。</div>
+      <div class="line-zh">今天可以试乘吗？</div></div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja">もちろん<ruby>可能<rt>かのう</rt></ruby>です。<ruby>運転<rt>うんてん</rt>免許証<rt>めんきょしょう</rt></ruby>をお<ruby>持<rt>も</rt></ruby>ちいただければ試乗していただけます。</div>
+      <div class="line-zh">当然可以，带着驾照就能试乘。</div></div>
+    <div class="line me"><div class="line-head"><span class="line-who">あなた</span></div>
+      <div class="line-ja ja">ちなみに、<ruby>現金<rt>げんきん</rt>一括<rt>いっかつ</rt></ruby>とローンとで<ruby>必要<rt>ひつよう</rt></ruby>な<ruby>手続<rt>てつづ</rt></ruby>きに<ruby>違<rt>ちが</rt></ruby>いはありますか。</div>
+      <div class="line-zh">另外，全款和贷款在手续上有什么不同吗？</div></div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja">ローンをご<ruby>希望<rt>きぼう</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>は<ruby>事前<rt>じぜん</rt></ruby><ruby>審査<rt>しんさ</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>になりますので、少しお<ruby>時間<rt>じかん</rt></ruby>をいただきます。</div>
+      <div class="line-zh">如果要贷款的话需要提前审核，会花一点时间。</div></div>
+  </div>
+
+  <div class="bpanel" data-bp="d">
+    <div class="branch-title">🎯 情況D：今日の午後は難しいと言われ、交渉する</div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja">申し訳ございませんが、本日の<ruby>午後<rt>ごご</rt></ruby>は<ruby>展示会<rt>てんじかい</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby>で、ご<ruby>来店<rt>らいてん</rt></ruby><ruby>対応<rt>たいおう</rt></ruby>が<ruby>難<rt>むずか</rt></ruby>しい<ruby>状況<rt>じょうきょう</rt></ruby>です。</div>
+      <div class="line-zh">很抱歉，今天下午因为有展示活动，不太方便接待。</div>
+      <div class="line-alt"><b>交渉の言い方：</b>そうですか…では、<ruby>明日<rt>あした</rt></ruby>の<ruby>午前中<rt>ごぜんちゅう</rt></ruby>でしたらご<ruby>対応<rt>たいおう</rt></ruby>いただけますでしょうか。</div></div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja"><ruby>明日<rt>あした</rt></ruby>の<ruby>午前<rt>ごぜん</rt></ruby>でしたら<ruby>空<rt>あ</rt></ruby>いております。</div>
+      <div class="line-zh">明天上午是空的。</div></div>
+    <div class="line me"><div class="line-head"><span class="line-who">あなた</span></div>
+      <div class="line-ja ja">では、<ruby>明日<rt>あした</rt></ruby>10<ruby>時<rt>じ</rt></ruby>に<ruby>伺<rt>うかが</rt></ruby>ってもよろしいでしょうか。</div>
+      <div class="line-zh">那明天10点过去可以吗？</div></div>
+  </div>
+
+  <div class="bpanel" data-bp="e">
+    <div class="branch-title">❌ 情況E：すでに成約済みで諦める</div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja">大変申し訳ございませんが、その<ruby>車両<rt>しゃりょう</rt></ruby>は<ruby>昨日<rt>きのう</rt></ruby><ruby>成約済<rt>せいやくず</rt></ruby>みとなってしまいました。</div>
+      <div class="line-zh">非常抱歉，那辆车昨天已经成交了。</div></div>
+    <div class="line me"><div class="line-head"><span class="line-who">あなた</span><span class="line-keigo">丁寧に受け止める</span></div>
+      <div class="line-ja ja">そうでしたか…<ruby>承知<rt>しょうち</rt></ruby>いたしました。もし<ruby>同<rt>おな</rt></ruby>じような<ruby>条件<rt>じょうけん</rt></ruby>の<ruby>車両<rt>しゃりょう</rt></ruby>が<ruby>入荷<rt>にゅうか</rt></ruby>しましたら、ご<ruby>連絡<rt>れんらく</rt></ruby>いただくことは<ruby>可能<rt>かのう</rt></ruby>でしょうか。</div>
+      <div class="line-zh">这样啊，明白了。如果以后有类似条件的车到货，能联系我一下吗？</div></div>
+    <div class="line them"><div class="line-head"><span class="line-who">スタッフ</span></div>
+      <div class="line-ja ja">かしこまりました。お<ruby>客様<rt>きゃくさま</rt></ruby>のご<ruby>連絡先<rt>れんらくさき</rt></ruby>を<ruby>伺<rt>うかが</rt></ruby>ってもよろしいでしょうか。</div>
+      <div class="line-zh">好的，能告诉我您的联系方式吗？</div></div>
+  </div>
+</section>
+
+<section id="carcall-buy">
+  <div class="sec-head">
+    <div class="sec-num">05 / AFTER YOU DECIDE</div>
+    <h2>今日決めたら、その日に乗って帰れる？</h2>
+    <p class="sec-desc">結論：基本的に当日の引き渡しはできない。契約から<ruby>納車<rt>のうしゃ</rt></ruby>まで一般的に1〜3週間、条件が良くても3〜7日はかかる。</p>
+  </div>
+  <div class="info-grid">
+    <div class="card">
+      <h3>当日に乗れない理由</h3>
+      <ul>
+        <li><ruby>名義<rt>めいぎ</rt>変更<rt>へんこう</rt></ruby>（登録の<ruby>名義<rt>めいぎ</rt></ruby>を自分に変える手続き）に数日かかる。</li>
+        <li>この車は660ccの<ruby>軽自動車<rt>けいじどうしゃ</rt></ruby>なので、普通車の「車庫証明」ではなく、より簡易な「<ruby>保管<rt>ほかん</rt>場所<rt>ばしょ</rt>届出<rt>とどけで</rt></ruby>」で済む。多くの場合その場で手続きが完了するが、<ruby>岡山市<rt>おかやまし</rt></ruby>は人口10万人以上の市にあたるため届出そのものは必要。</li>
+        <li>納車前の<ruby>法定<rt>ほうてい</rt>点検<rt>てんけん</rt></ruby>・整備にも数日〜1週間ほど見ておく。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>保険について</h3>
+      <ul>
+        <li><ruby>自賠責<rt>じばいせき</rt>保険<rt>ほけん</rt></ruby>（法定強制保険）は支払総額に含まれ、販売店側で手続きしてくれる。</li>
+        <li>自分で用意すべきは<ruby>任意<rt>にんい</rt>保険<rt>ほけん</rt></ruby>（対人・対物・車両保険など）。法律上の義務ではないが、事故時の負担を考えると実質必須。</li>
+        <li>加入は購入手続きが済み次第なるべく早く、<b>納車当日、運転を始める前までに必ず有効化</b>しておく。</li>
+        <li>ネット直販は保険料が安いが手続きに時間がかかることがあり、販売店代理店なら当日中に手続きできることが多い。日本の運転免許を持っていれば、国際免許のみの場合より保険料は抑えられる。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>用意しておく書類の目安</h3>
+      <ul>
+        <li>在留カード・パスポート（本人確認）</li>
+        <li><ruby>住民票<rt>じゅうみんひょう</rt></ruby>（発行から3ヶ月以内、市役所・コンビニなどで約300円）</li>
+        <li><ruby>印鑑<rt>いんかん</rt></ruby>（実印でなく普通の印章でよいが、ゴム印は不可）</li>
+        <li>運転免許証</li>
+        <li><ruby>委任状<rt>いにんじょう</rt></ruby>（登録手続きを店に委任するための書類。店が用意した書式にその場でサインすることが多い）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>⚠️ 店ごとに違うので必ず確認する</h3>
+      <ul>
+        <li>支払い方法（現金一括か、日本の銀行口座からの振込を求められるかなど）は店によって対応が異なる。</li>
+        <li>納車までの実際の日数、当日その場でどこまで契約できるかも店・在庫状況・ローンの有無で変わる。</li>
+        <li>ここでの内容は業界一般の流れであり、この店の正式な回答は電話・来店時に直接確認すること。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="carcall-phrases">
+  <div class="sec-head">
+    <div class="sec-num">06 / KEY PHRASES</div>
+    <h2>高頻出フレーズ</h2>
+    <p class="sec-desc">そのまま暗記して使える固定表現。</p>
+  </div>
+  <div class="phrase-grid">
+    <div class="phrase"><div class="phrase-ja ja">お<ruby>忙<rt>いそが</rt></ruby>しいところ<ruby>恐縮<rt>きょうしゅく</rt></ruby>ですが</div><div class="phrase-zh">百忙中打扰您</div><div class="phrase-note">万能开场白</div></div>
+    <div class="phrase"><div class="phrase-ja ja"><ruby>在庫<rt>ざいこ</rt></ruby>確認<rt>かくにん</rt>のお<ruby>電話<rt>でんわ</rt></ruby>です</div><div class="phrase-zh">我是来电确认库存的</div><div class="phrase-note">直接说明来意</div></div>
+    <div class="phrase"><div class="phrase-ja ja"><ruby>本日<rt>ほんじつ</rt></ruby>の<ruby>午後<rt>ごご</rt></ruby>、<ruby>伺<rt>うかが</rt></ruby>ってもよろしいでしょうか</div><div class="phrase-zh">今天下午可以过去吗</div><div class="phrase-note">约定来店时间</div></div>
+    <div class="phrase"><div class="phrase-ja ja"><ruby>駅<rt>えき</rt></ruby>からの<ruby>道順<rt>みちじゅん</rt></ruby>を<ruby>教<rt>おし</rt></ruby>えていただけますか</div><div class="phrase-zh">能告诉我从车站怎么走吗</div><div class="phrase-note">坐电车时必问</div></div>
+    <div class="phrase"><div class="phrase-ja ja"><ruby>本日<rt>ほんじつ</rt></ruby><ruby>契約<rt>けいやく</rt></ruby>した<ruby>場合<rt>ばあい</rt></ruby>、<ruby>納車<rt>のうしゃ</rt></ruby>までどのくらいかかりますか</div><div class="phrase-zh">如果今天签约，多久能拿到车</div><div class="phrase-note">了解真实时间线</div></div>
+    <div class="phrase"><div class="phrase-ja ja"><ruby>任意<rt>にんい</rt>保険<rt>ほけん</rt></ruby>の<ruby>加入<rt>かにゅう</rt></ruby>について<ruby>教<rt>おし</rt></ruby>えていただけますか</div><div class="phrase-zh">能说明一下任意保险怎么加入吗</div><div class="phrase-note">保险衔接问题</div></div>
+    <div class="phrase"><div class="phrase-ja ja"><ruby>必要<rt>ひつよう</rt></ruby>な<ruby>書類<rt>しょるい</rt></ruby>は<ruby>何<rt>なに</rt></ruby>がありますか</div><div class="phrase-zh">需要准备哪些文件</div><div class="phrase-note">提前准备材料</div></div>
+    <div class="phrase"><div class="phrase-ja ja">かしこまりました</div><div class="phrase-zh">明白了</div><div class="phrase-note">多为店员用语</div></div>
+    <div class="phrase"><div class="phrase-ja ja">少々<ruby>お待<rt>まち</rt></ruby>ください</div><div class="phrase-zh">请稍等</div><div class="phrase-note">对方查询时</div></div>
+    <div class="phrase"><div class="phrase-ja ja"><ruby>差<rt>さ</rt></ruby>し<ruby>支<rt>つか</rt></ruby>えなければ</div><div class="phrase-zh">如果方便的话</div><div class="phrase-note">委婉提问前缀</div></div>
+    <div class="phrase"><div class="phrase-ja ja"><ruby>折<rt>お</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>しご<ruby>連絡<rt>れんらく</rt></ruby>いたします</div><div class="phrase-zh">稍后给您回电</div><div class="phrase-note">对方常用</div></div>
+    <div class="phrase"><div class="phrase-ja ja">お<ruby>手数<rt>てすう</rt></ruby>をおかけしますが</div><div class="phrase-zh">给您添麻烦了</div><div class="phrase-note">请求前铺垫</div></div>
+    <div class="phrase"><div class="phrase-ja ja">ありがとうございます、<ruby>失礼<rt>しつれい</rt></ruby>いたします</div><div class="phrase-zh">谢谢，先挂了</div><div class="phrase-note">收线礼貌用语</div></div>
+    <div class="phrase"><div class="phrase-ja ja"><ruby>念<rt>ねん</rt></ruby>のため<ruby>確認<rt>かくにん</rt></ruby>させていただきたいのですが</div><div class="phrase-zh">为保险起见想确认一下</div><div class="phrase-note">价格等敏感确认</div></div>
+    <div class="phrase"><div class="phrase-ja ja"><ruby>担当<rt>たんとう</rt></ruby>の<ruby>者<rt>もの</rt></ruby>におつなぎします</div><div class="phrase-zh">帮您转接负责人</div><div class="phrase-note">对方常用</div></div>
+  </div>
+</section>
+
+<section id="carcall-traps">
+  <div class="sec-head">
+    <div class="sec-num">07 / PITFALLS</div>
+    <h2>よくある落とし穴</h2>
+  </div>
+  <div class="trap-list">
+    <div class="trap"><div class="trap-mark">✕</div><div><b>0078-60から始まる番号は転送用</b><p>店名を名乗らずに出ることがあるため、こちらから「スズキアリーナ西岡山さんでしょうか」と確認するとよい。</p></div></div>
+    <div class="trap"><div class="trap-mark">✕</div><div><b>車種名だけ伝えて終わらない</b><p>管理番号（ccAU7054988853）を伝え忘れると、同じ車種の別個体と間違われる可能性がある。</p></div></div>
+    <div class="trap"><div class="trap-mark">✕</div><div><b>「伺う」と「いらっしゃる」の向きを逆にしない</b><p>「伺う」は自分がへりくだって行く/尋ねる、「いらっしゃる」は相手を敬って言う「来る/いる」。方向が逆。</p></div></div>
+    <div class="trap"><div class="trap-mark">✕</div><div><b>金額を直接「高い」と言わない</b><p>「総額101.5万円で間違いないでしょうか」のように中立的な確認表現を使う。</p></div></div>
+    <div class="trap"><div class="trap-mark">✕</div><div><b>「今日中に契約すれば今日乗れる」と思い込まない</b><p>名義変更・保管場所届出・法定整備などが必要で、当日の引き渡しは原則できない。</p></div></div>
+    <div class="trap"><div class="trap-mark">✕</div><div><b>電話を無言で切らない</b><p>「よろしくお願いいたします」「失礼いたします」を必ず添える。</p></div></div>
+  </div>
+</section>
+
+<section id="carcall-ask">
+  <div class="sec-head">
+    <div class="sec-num">08 / IF YOU DON'T CATCH IT</div>
+    <h2>聞き取れなかった時の切り返し</h2>
+  </div>
+  <div class="ask-list">
+    <div class="ask"><span class="ask-ja ja">もう<ruby>一度<rt>いちど</rt></ruby>おっしゃっていただけますか</span><span class="ask-zh">能再说一遍吗？</span></div>
+    <div class="ask"><span class="ask-ja ja">少しゆっくりお<ruby>話<rt>はな</rt></ruby>しいただけますか</span><span class="ask-zh">能说慢一点吗？</span></div>
+    <div class="ask"><span class="ask-ja ja">すみません、<ruby>電波<rt>でんぱ</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>いようで、もう<ruby>一度<rt>いちど</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いできますか</span><span class="ask-zh">信号不太好，能再说一次吗（应急借口）</span></div>
+    <div class="ask"><span class="ask-ja ja">その<ruby>点<rt>てん</rt></ruby>について、もう少し<ruby>詳<rt>くわ</rt></ruby>しく<ruby>教<rt>おし</rt></ruby>えていただけますか</span><span class="ask-zh">这一点能再详细说明一下吗？</span></div>
+  </div>
+</section>
+
+<section id="carcall-notes">
+  <div class="sec-head">
+    <div class="sec-num">09 / STUDY NOTES</div>
+    <h2>学習メモ</h2>
+  </div>
+  <div class="note-grid">
+    <div class="note-card"><h3>敬語のレベル感</h3><p>電話の切り出しと締めは標準敬語（尊敬語＋謙譲語）。時間や道順など事実確認の部分は丁寧体まで崩してよいが、相手は基本的にずっと敬語を保つので、こちらが崩しすぎないほうが自然。</p></div>
+    <div class="note-card"><h3>数字の読み方</h3><p>管理番号ccAU7054988853はアルファベット部分を「シーシーエーユー」とまとめ、数字は一桁ずつ読む。14時は「じゅうよじ」と読み、「じゅうよんじ」ではない。</p></div>
+    <div class="note-card"><h3>来店での問い合わせとの違い</h3><p>電話ではまず相手の店名を自分から確認し、車種名だけでなく管理番号で車両を特定する必要がある。来店時は実車を指差して話せるため、この確認手順を省略できる。</p></div>
+    <div class="note-card"><h3>心構え</h3><p>在庫確認の電話は日本の中古車購入では非常に一般的な行為で、遠慮する必要はない。商談中・成約済みと言われても、それは日常的にあることなので、丁寧に受け止めて次の車を探せばよい。</p></div>
+  </div>
+</section>
+
+</div>
+</div>
+<!-- /scenario-carcall -->
 
 <footer>整合自 中古車売り場、JINS眼镜店、バイト面接電話、OSK水泳パーソナル 与 コンビニバイト面接 五份场景准备资料，统一格式方便切换练习。</footer>
 
